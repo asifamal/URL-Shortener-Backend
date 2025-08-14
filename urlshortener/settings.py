@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-gpmpevfkxcqbw2ziu-k1o6xg!(l+x@#x&xc%xq0umzev-ja9o(
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://url-shortener-backend-8fda.onrender.com",
+    "url-shortener-backend-8fda.onrender.com",
 ]
 
 
