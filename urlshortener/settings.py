@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,9 @@ SECRET_KEY = 'django-insecure-gpmpevfkxcqbw2ziu-k1o6xg!(l+x@#x&xc%xq0umzev-ja9o(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "https://url-shortener-backend-8fda.onrender.com",
+]
 
 
 # Application definition
@@ -76,16 +80,23 @@ WSGI_APPLICATION = 'urlshortener.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'url_db',
-        'USER': 'asif',
-        'PASSWORD': 'mypassword',
-        'HOST': 'localhost', 
-        'PORT': '5432',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'url_db',
+#         'USER': 'asif',
+#         'PASSWORD': 'mypassword',
+#         'HOST': 'localhost', 
+#         'PORT': '5432',
     
-}}
+# }}
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgres://asif:mypassword@host:5432/url_db',
+        conn_max_age=600,
+    )
+}
 
 
 # Password validation
